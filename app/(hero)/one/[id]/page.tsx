@@ -3,19 +3,21 @@ import React from "react";
 import { data } from "../../../../data";
 import Link from "next/link";
 
-interface IParams {
-  params: { id: string };
+interface  IParams {
+  params: Promise<{ id: string }>;
 }
 
 //动态Metadata
 export async function generateMetadata({ params }: IParams) {
+  const param = (await params);
   return {
-    title: `用户页面 - ${params.id}`,
+    title: `用户页面 - ${param.id}`,
   };
 }
 
-export default function page({ params }:IParams) {
-  const item = data.find((item) => item.id === +params.id);
+export default async function page({ params }:IParams) {
+    const param = (await params);
+  const item = data.find((item) => item.id === +param.id);
   return (
     <div>
       <div className="max-w-xl mx-auto">
