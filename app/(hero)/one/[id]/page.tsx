@@ -8,13 +8,13 @@ interface IParams {
 }
 
 //动态Metadata
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: IParams) {
   return {
     title: `用户页面 - ${params.id}`,
   };
 }
 
-export default function page({ params }: { params: { id: string } }) {
+export default function page({ params }:IParams) {
   const item = data.find((item) => item.id === +params.id);
   return (
     <div>
