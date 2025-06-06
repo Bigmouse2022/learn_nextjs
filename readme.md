@@ -31,21 +31,10 @@ const comforter = Comforter({
 ## 引入antd集成
 npm install antd --save
 修改 src/app/page.tsx，引入 antd 的按钮组件。
-import React from 'react';
+
 import { Button } from 'antd';
-
-const Home = () => (
-  <div className="App">
-    <Button type="primary">Button</Button>
-  </div>
-);
-
-export default Home;
-
 兼容问题
-
 React 19 兼容性问题
-
 由于 React 19 调整了 的 export 方法，antd 不能直接使用该方法。因此，使用 antd 会遇到以下问题：`react-dom``ReactDOM.render`
 
 - Wave 效果不显示
@@ -77,13 +66,6 @@ unstableSet渲染
 
 同样，请先使用兼容包。仅针对 umd、微应用等特殊场景，使用该方法。 是一种低级注册方法，允许开发人员修改 ReactDOM 的渲染方法。在应用程序的入口处编写以下代码：`unstableSetRender``unstableSetRender`
 
-JS
-
-```js
-import { unstableSetRender } from 'antd';import { createRoot } from 'react-dom/client';
-unstableSetRender((node, container) => {  container._reactRoot ||= createRoot(container);  const root = container._reactRoot;  root.render(node);  return async () => {    await new Promise((resolve) => setTimeout(resolve, 0));    root.unmount();  };});
-```
-
 使用 App Router 
 
 如果你在 Next.js 当中使用了 App Router, 并使用 antd 作为页面组件库，为了让 antd 组件库在你的 Next.js 应用中能够更好的工作，提供更好的用户体验，你可以尝试使用下面的方式将 antd 首屏样式按需抽离并植入到 HTML 中，以避免页面闪动的情况。
@@ -95,12 +77,30 @@ $ npm install @ant-design/nextjs-registry --save
 ```
 
 1. 在 `app/layout.tsx` 中使用
+<AntdRegistry>{children}</AntdRegistry>
 
-```tsx
-import React from 'react';import { AntdRegistry } from '@ant-design/nextjs-registry';
-const RootLayout = ({ children }: React.PropsWithChildren) => (  <html lang="en">    <body>      <AntdRegistry>{children}</AntdRegistry>    </body>  </html>);
-export default RootLayout;
-```
+## 在vercel部署
 
+## 继承lowdb增加和删除
+还没学数据库的操作，用lowdb来操作文章相关的数据
+https://github.com/typicode/lowdb
+项目
+npm install lowdb
 
-## 在vercel
+创建个db.ts文件
+import { JSONFilePreset } from 'lowdb/node'
+
+// Read or create db.json
+const defaultData = { posts: [] }
+const db = await JSONFilePreset('db.json', defaultData)
+
+export default db;
+*************************************************************
+
+// Update db.json
+await db.update(({ posts }) => posts.push('hello world'))
+
+// Alternatively you can call db.write() explicitely later
+// to write to db.json
+db.data.posts.push('hello world')
+await db.write()

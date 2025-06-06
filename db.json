@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": "j5hnuqvo",
+      "title": "训练值7",
+      "content": "vue进阶"
+    },
+    {
+      "id": "eh9yj8pd",
+      "title": "训练值6",
+      "content": "Next进阶"
+    },
+    {
+      "id": "sbp0c71j",
+      "title": "训练值5",
+      "content": "Next进阶"
+    },
+    {
+      "id": "l0w63xvd",
+      "title": "训练值4",
+      "content": "Next进阶"
+    },
+    {
+      "id": "qqjq57rz",
+      "title": "训练值3",
+      "content": "Next进阶"
+    },
+    {
+      "id": "lt8j45uj",
+      "title": "训练值1",
+      "content": "Next进阶"
+    },
+    {
+      "id": "tyizkpsb",
+      "title": "经过修改的训练营",
+      "content": "修改过的Next基础"
+    }
+  ]
+}
