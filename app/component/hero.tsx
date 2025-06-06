@@ -14,10 +14,10 @@ export default function Hero(props: IPros) {
         <Image
           src={props.imgurl}
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "fill" }}
           alt={props.altText}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-400"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-blue-400"></div> */}
       </div>
       <div className="flex justify-center pt-48">
         <h1 className="text-white text-6xl">{props.content}</h1>

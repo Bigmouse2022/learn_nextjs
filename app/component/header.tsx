@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 const linkData = [
   { name: "动态路由", href: "/one" },
   { name: "平行路由", href: "/two" },
-  { name: "three", href: "/three" },
+  { name: "拦截路由", href: "/three" },
 ];
 
 //const accessLink =[ "/","/one","/two","/three"];

@@ -16,7 +16,7 @@ export default function Onelist() {
           <Image
             src={oneSrc}
             fill
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "fill" }}
             alt="onepage"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-400"></div>
